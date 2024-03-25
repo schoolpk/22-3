@@ -1,0 +1,50 @@
+CREATE TABLE khoa(
+id INT PRIMARY KEY AUTO_INCREMENT,
+makhoa VARCHAR(10),
+tenkhoa VARCHAR(30),
+dienthoai VARCHAR(10)
+);
+
+CREATE TABLE sinhvien(
+id INT PRIMARY KEY AUTO_INCREMENT,
+masv INT,
+hotensv VARCHAR(30),
+makhoa VARCHAR(10),
+namsinh DATETIME,
+quequan VARCHAR(30)
+-- FOREIGN KEY(makhoa_sv) REFERENCES khoa(makhoa)
+);
+
+
+INSERT INTO Khoa(id, makhoa, tenkhoa, dienthoai)
+VALUES
+(1, 'T', 'TOAN', 078282828),
+(2, 'V', 'VAN', 028958285),
+(3, 'A', 'ANH', 023947875),
+(4, 'L', 'LI', 028479849),
+(5, 'H', 'HOA', 092815755);
+
+
+INSERT INTO Sinhvien(id, masv, hotensv, makhoa, namsinh, quequan)
+VALUES
+(1, 001, 'Phan Duc Duy', 'T', '2005-09-24 00:00:00', 'HN'),
+(2, 002, 'Nguyen Trong Tan', 'A', '2005-06-21 00:00:00', 'SG'), 
+(3, 003, 'Pham Anh Cuong', '', '2005-02-12 00:00:00', 'CM'), 
+(4, 004, 'Tran Quoc Huy', 'L', '2005-04-30 00:00:00', 'QT'), 
+(5, 005, 'Nguyen Thi Ha', 'H', '2005-10-15 00:00:00', 'BG');
+
+
+
+SELECT *
+FROM sinhvien JOIN khoa
+ ON sinhvien.makhoa = khoa.makhoa
+
+
+SELECT *
+FROM sinhvien
+WHERE sinhvien.makhoa = '';
+
+SELECT *
+FROM sinhvien JOIN khoa
+ ON sinhvien.makhoa = khoa.makhoa
+WHERE khoa.tenkhoa = 'TOAN';
